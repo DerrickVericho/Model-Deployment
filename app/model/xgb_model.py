@@ -5,8 +5,8 @@ import requests
 
 
 class Model:
-    model_path = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/app/model/onehot_encoder.pkl"
-    preprocessor_path = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/app/model/xgb_model.pkl"
+    preprocessor_path = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/app/model/onehot_encoder.pkl"
+    model_path = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/app/model/xgb_model.pkl"
     
     # model_path = "model/xgb_model.pkl"
     # preprocessor_path = "model/onehot_encoder.pkl"
