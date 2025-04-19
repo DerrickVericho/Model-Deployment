@@ -14,7 +14,7 @@ st.title("💰 Loan Approval Prediction App with XGBoost")
 
 #<--------------------------------------------------------Setting piechart--------------------------------------------------------------->
 st.divider()
-url = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/Dataset_A_loan.csv"
+url = "Dataset_A_loan.csv"
 df = model.read_data(url)
 labels = ['Rejected (0)', 'Approved (1)']
 sizes = df['loan_status'].value_counts().sort_index()
@@ -61,19 +61,19 @@ with col1:
 
 
 #<----------------------------------------------------------Bagian Input--------------------------------------------------------------->
-age = st.slider("Umur", 18, 70, 18)
+age = st.number_input("Umur", 18, 70, 18)
 gender = st.radio("Jenis Kelamin", ("male", "female"))
 education = st.selectbox("Pendidikan Terakhir", ["High School", "Associate", "Bachelor", "Master", "Doctorate"])
 home = st.selectbox("Status Kepemilikan Rumah", ["RENT", "OWN", "MORTGAGE","OTHER"])
 intent = st.selectbox("Tujuan Pinjaman", ["EDUCATION", "MEDICAL", "VENTURE", "PERSONAL", "DEBTCONSOLIDATION", "HOMEIMPROVEMENT"])
-income = st.number_input("Pendapatan Tahunan (USD)", 1000, 1000000, 50000)
+income = st.number_input("Pendapatan Tahunan (USD) *Centang apabila tidak tersedia", 1000, 1000000, 50000)
 income_missing = st.checkbox("Apakah pendapatan tidak tersedia?")
 loan_amount = st.number_input("Jumlah Pinjaman (USD)", 500, 100000, 1000)
-interest_rate = st.slider("Bunga Pinjaman (%)", 0.0, 30.0, 5.0)
+interest_rate = st.number_input("Bunga Pinjaman (%)", 0.0, 30.0, 5.0)
 percent_income = round(loan_amount / (income if income > 0 else 1), 2)  # Hitungan dari hutang/income, jika tidak ada income maka = hutang
-cred_hist = st.slider("Lama Riwayat Kredit (tahun)", 1, 30, 10)
-emp_exp = st.slider("Pengalaman Kerja (tahun)", 0, 40, 10)
-credit_score = st.slider("Skor Kredit", 300, 850, 500)
+cred_hist = st.number_input("Lama Riwayat Kredit (tahun)", 1, 30, 10)
+emp_exp = st.number_input("Pengalaman Kerja (tahun)", 0, 40, 10)
+credit_score = st.number_input("Skor Kredit", 300, 850, 500)
 previous_default = st.radio("Pernah Gagal Bayar?", ("No", "Yes"))
 
 if st.button("Prediksi"):

@@ -5,28 +5,19 @@ import requests
 
 
 class Model:
-    preprocessor_path = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/app/model/onehot_encoder.pkl"
-    model_path = "https://raw.githubusercontent.com/DerrickVericho/Model-Deployment/master/app/model/xgb_model.pkl"
     
-    # model_path = "model/xgb_model.pkl"
-    # preprocessor_path = "model/onehot_encoder.pkl"
+    model_path = "xgb_model.pkl"
+    preprocessor_path = "onehot_encoder.pkl"
 
-    def __init__(self, model_path=model_path, preprocessor_path=preprocessor_path) -> None: # model_path: str, preprocessor_path: str):
+    def __init__(self, model_path=model_path, preprocessor_path=preprocessor_path): 
         # Load preprocessor
-        # with open(preprocessor_path, 'rb') as f:
-        #     self.preprocessor = pickle.load(f)
+        with open(preprocessor_path, 'rb') as f:
+            self.preprocessor = pickle.load(f)
             
-        # # Load model
-        # with open(model_path, 'rb') as f:
-        #     self.model = pickle.load(f)
+        # Load model
+        with open(model_path, 'rb') as f:
+            self.model = pickle.load(f)
         
-        # Load preprocessor dari URL
-        response = requests.get(preprocessor_path)
-        self.preprocessor = pickle.load(io.BytesIO(response.content))
-
-        # Load model dari URL
-        response = requests.get(model_path)
-        self.model = pickle.load(io.BytesIO(response.content))
     def read_data(self, path):
         return pd.read_csv(path, encoding='ISO-8859-1')
             
