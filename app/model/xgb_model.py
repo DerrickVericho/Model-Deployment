@@ -1,7 +1,5 @@
 import pickle
 import pandas as pd
-import io
-import requests
 
 
 class Model:

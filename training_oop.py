@@ -37,7 +37,6 @@ class BestXGB:
     def clean_data(self, df):
         df = df.replace("fe male", "female")
         df['loan_status'] = df['loan_status'].astype(int)
-        df = df.dropna()
         return df
 
     def remove_row(self, df):
